@@ -8,7 +8,8 @@ function checkInventory(callback) {
 function createOrder(callback) {
   setTimeout(() => {
     console.log("creating the order ...");
-    callback()
+    const error = new Error("order creation failed...")
+    callback(error)
   }, 1000);
 }
 
@@ -27,7 +28,10 @@ function sendInvoice() {
 
 function main() {
   checkInventory(() => {
-    createOrder(() => {
+    createOrder((error) => {
+        if(error) {
+            console.log(error)
+        }
       chargePayment(() => {
         sendInvoice();
       });
