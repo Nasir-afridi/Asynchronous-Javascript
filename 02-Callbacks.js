@@ -13,12 +13,7 @@ function createOrder(callback) {
   }, 1000);
 }
 
-function chargePayment(callback) {
-  setTimeout(() => {
-    console.log("charging the payment...");
-    callback()
-  }, 2000);
-}
+
 
 function sendInvoice() {
   setTimeout(() => {
@@ -32,7 +27,12 @@ function main() {
         if(error) {
             console.log(error)
         }
-      chargePayment(() => {
+      chargePayment((err, chargeAmoun) => {
+        if(err) {
+            console.log("handling the error")
+            return;
+        }
+        console.log("charged : ", chargeAmoun);
         sendInvoice();
       });
     });
