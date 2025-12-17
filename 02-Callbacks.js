@@ -13,6 +13,15 @@ function createOrder(callback) {
   }, 1000);
 }
 
+function chargePayment(callback) {
+  setTimeout(() => {
+    console.log("charging the payment...");
+    const err = null;
+    const chargeAmoun = 300;
+    callback(err, chargeAmoun);
+  }, 2000);
+}
+
 function sendInvoice() {
   setTimeout(() => {
     console.log("sending the invoice...");
@@ -120,13 +129,18 @@ Zyada nested callbacks likhne se code:
 
 Is problem ko CALLBACK HELL kehte hain.
 
+Isi liye later:
+- Promises
+- async/await
+use kiye jate hain.
+
 ----------------------------------------
 SUMMARY
 ----------------------------------------
- Callback async flow handle karta hai
- Error-first pattern industry standard hai
- Data callback ke through return hota hai
- Callbacks JS async learning ki foundation hain
+✔ Callback async flow handle karta hai
+✔ Error-first pattern industry standard hai
+✔ Data callback ke through return hota hai
+✔ Callbacks JS async learning ki foundation hain
 
 ========================================
 */
