@@ -2,7 +2,8 @@ function checkInventory() {
   const promise = new Promise((resolve, reject) => {
     setTimeout(() => {
       console.log("checking the inventory ...");
-      resolve();
+      // resolve();
+      reject(new Error("failed to check the inventory.."))
     }, 2000);
   });
   return promise;
@@ -22,7 +23,8 @@ function chargePayment() {
   const promise = new Promise((resolve, reject) => {
     setTimeout(() => {
       console.log("charging the payment...");
-      resolve();
+      // resolve();
+      reject(new Error("failed to chargePayment.."))
     }, 2000);
   });
   return promise;
@@ -39,7 +41,22 @@ function sendInvoice() {
 }
 
 function main() {
-  checkInventory().then(createOrder).then(chargePayment).then(sendInvoice);
+  checkInventory()
+    .catch((err) => {
+      console.log("err", err)
+    })
+    .then(createOrder)
+     .catch((err) => {
+      console.log("err", err)
+    })
+    .then(chargePayment)
+     .catch((err) => {
+      console.log("err", err)
+    })
+    .then(sendInvoice)
+     .catch((err) => {
+      console.log("err", err)
+    });
 }
 
 main();
