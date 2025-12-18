@@ -33,25 +33,51 @@ function sendInvoice() {
   const promise = new Promise((resolve, reject) => {
     setTimeout(() => {
       console.log("sending the invoice...");
-    //   resolve();
-    reject(new Error("Error catched..."));
+      //   resolve();
+      reject(new Error("Error catched..."));
     }, 1000);
   });
   return promise;
 }
 
 async function main() {
-    setTimeout(() => {
-        console.log("Other request processing...")
-    }, 3000);
+  setTimeout(() => {
+    console.log("Other request processing...");
+  }, 3000);
 
-    // hrr function ko chk krna ho to try catch alag alag lagana hoga
+  // hrr function ko chk krna ho to try catch alag alag lagana hoga
+
   try {
     await checkInventory();
+  } catch (err) {
+    console.log("err", err);
+  }
+
+    try {
     await createOrder();
+  } catch (err) {
+    console.log("err", err);
+  }
+    try {
     await chargePayment();
+  } catch (err) {
+    console.log("err", err);
+  }
+
+    try {
     await sendInvoice();
-    } catch(err) {console.log("err", err)}
+  } catch (err) {
+    console.log("err", err);
+  }
+
+  //   try {
+  //     await checkInventory();
+  //     await createOrder();
+  //     await chargePayment();
+  //     await sendInvoice();
+  //     } catch(err) {
+  //         console.log("err", err)
+  //   }
 }
 
-main(); 
+main();
