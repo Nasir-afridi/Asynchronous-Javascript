@@ -2,7 +2,8 @@ function checkInventory() {
   const promise = new Promise((resolve, reject) => {
     setTimeout(() => {
       console.log("checking the inventory ...");
-      resolve();
+      let inStock = 9
+      resolve(inStock);
     }, 2000);
   });
   return promise;
@@ -43,7 +44,8 @@ async function main() {
     setTimeout(() => {
         console.log("Other request processing...")
     }, 3000)
-    await checkInventory();
+   let a = await checkInventory();
+   console.log(a);
     await createOrder();
     await chargePayment();
     await sendInvoice();
