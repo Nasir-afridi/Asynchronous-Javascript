@@ -1,6 +1,23 @@
+// Order tracking example for Synchronous js.
+function checkingInventory() {
+  console.log("checking the inventory...");
+}
+function createOrder() {
+  console.log("Creating the Order...");
+}
+
+function chargePayment() {
+  console.log("Charging the Payment...");
+}
+
+function sendInvoice() {
+  console.log("Sending the invoice...");
+}
+
 function main() {
-  console.log("first");
-  console.log("second");
-  console.log("third");
+  checkingInventory();
+  createOrder();
+  chargePayment();
+  sendInvoice();
 }
 main();
