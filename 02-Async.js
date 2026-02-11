@@ -1,3 +1,10 @@
+/* 
+ Asynchronous = tasks can happen at different times, order is not guaranteed. 
+ Here things work differently. Tasks don't block each other.
+ Some tasks might take time (like fetching data or waiting for a timer),
+ so other code can run while we wait.
+*/
+
 // Async code example.
 function checkingInventory() {
   setTimeout(() => {
