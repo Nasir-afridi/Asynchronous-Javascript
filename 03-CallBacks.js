@@ -131,8 +131,8 @@ Too many nested callbacks make code:
 This is called "Callback Hell".
 
 To solve this, developers use:
-- Promises
-- async/await
+ Promises
+ async/await
 
 ----------------------------------------
 SUMMARY
