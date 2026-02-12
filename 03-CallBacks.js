@@ -27,6 +27,7 @@ function sendInvoice(callback) {
 }
 
 function main() {
+  // Callback Hell.
   checkingInventory(() => {
     createOrder(() => {
       chargePayment(() => {
