@@ -16,7 +16,9 @@ function createOrder(callback) {
 function chargePayment(callback) {
   setTimeout(() => {
     console.log("Charging the Payment...");
-    callback();
+    const error = null;
+    const chargedAmount = 100;
+    callback(error, chargedAmount);
   }, 1500);
 }
 
@@ -34,7 +36,12 @@ function main() {
       if (err) {
         console.log(err);
       }
-      chargePayment(() => {
+      chargePayment((error, chargedAmount) => {
+        if (error) {
+          console.log("handling the error");
+          return;
+        }
+        console.log("charged : ", chargedAmount);
         sendInvoice();
       });
     });
