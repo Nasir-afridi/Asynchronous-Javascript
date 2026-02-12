@@ -140,6 +140,6 @@ SUMMARY
  Callbacks manage async flow
  Error-first pattern is standard
  Data returns through callbacks
- Foundation of async JavaScript
+ Foundation of async JavaScript.
 ========================================
 */
