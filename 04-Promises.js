@@ -2,8 +2,7 @@ function checkingInventory() {
   const promise = new Promise((resolve, reject) => {
     setTimeout(() => {
       console.log("checking the inventory...");
-      // agrr error ko handle nahe kraingy to application crash krjayga. isliye reject hoty he osko handle krna zroori hai.
-      reject(new Error("Failed To load..."));
+      reject(new Error("Failed To load...")); // agrr error ko handle nahe kraingy to application crash krjayga. isliye reject hoty he osko handle krna zroori hai.
     }, 2000);
   });
   return promise;
@@ -40,7 +39,13 @@ function sendInvoice() {
 }
 
 function main() {
-  checkingInventory().then(createOrder).then(chargePayment).then(sendInvoice);
+  checkingInventory()
+    .then(createOrder)
+    .then(chargePayment)
+    .then(sendInvoice)
+    .catch((err) => {
+      console.log("error is : ", err);
+    });
 }
 
 main();
