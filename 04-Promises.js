@@ -1,10 +1,11 @@
 function checkingInventory() {
-  const promise = new Promise(() => {
+  const promise = new Promise((resolve, reject) => {
     setTimeout(() => {
       console.log("checking the inventory...");
+      resolve();
     }, 2000);
-    return promise;
   });
+  return promise;
 }
 
 function createOrder(callback) {
@@ -32,21 +33,7 @@ function sendInvoice(callback) {
 }
 
 function main() {
-  checkingInventory(() => {
-    createOrder((err) => {
-      if (err) {
-        console.log(err);
-      }
-      chargePayment((error, chargedAmount) => {
-        if (error) {
-          console.log("handling the error");
-          return;
-        }
-        console.log("charged : ", chargedAmount);
-        sendInvoice();
-      });
-    });
-  });
+  checkingInventory();
 }
 
 main();
