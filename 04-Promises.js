@@ -18,24 +18,28 @@ function createOrder() {
   return promise;
 }
 
-function chargePayment(callback) {
-  setTimeout(() => {
-    console.log("Charging the Payment...");
-    const error = null;
-    const chargedAmount = 100;
-    callback(error, chargedAmount);
-  }, 1500);
+function chargePayment() {
+  const promise = new Promise((resolve, reject) => {
+    setTimeout(() => {
+      console.log("Charging the Payment...");
+      resolve();
+    }, 1500);
+  });
+  return promise;
 }
 
-function sendInvoice(callback) {
-  setTimeout(() => {
-    console.log("Sending the invoice...");
-    if (callback) callback();
-  }, 3000);
+function sendInvoice() {
+  const promise = new Promise((resolve, reject) => {
+    setTimeout(() => {
+      console.log("Sending the invoice...");
+      resolve();
+    }, 3000);
+  });
+  return promise;
 }
 
 function main() {
-  checkingInventory().then(createOrder);
+  checkingInventory().then(createOrder).then(chargePayment).then(sendInvoice);
 }
 
 main();
