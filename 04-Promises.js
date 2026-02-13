@@ -2,7 +2,8 @@ function checkingInventory() {
   const promise = new Promise((resolve, reject) => {
     setTimeout(() => {
       console.log("checking the inventory...");
-      resolve();
+      // agrr error ko handle nahe kraingy to application crash krjayga. isliye reject hoty he osko handle krna zroori hai.
+      reject(new Error("Failed To load..."));
     }, 2000);
   });
   return promise;
