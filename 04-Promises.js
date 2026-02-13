@@ -8,12 +8,14 @@ function checkingInventory() {
   return promise;
 }
 
-function createOrder(callback) {
-  setTimeout(() => {
-    console.log("Creating the Order...");
-    const err = new Error("Order is not created...");
-    callback(err);
-  }, 1000);
+function createOrder() {
+  const promise = new Promise((resolve, reject) => {
+    setTimeout(() => {
+      console.log("Creating the Order...");
+      resolve();
+    }, 1000);
+  });
+  return promise;
 }
 
 function chargePayment(callback) {
@@ -33,7 +35,7 @@ function sendInvoice(callback) {
 }
 
 function main() {
-  checkingInventory();
+  checkingInventory().then(createOrder);
 }
 
 main();
