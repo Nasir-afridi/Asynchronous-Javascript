@@ -12,7 +12,8 @@ function createOrder() {
   const promise = new Promise((resolve, reject) => {
     setTimeout(() => {
       console.log("Creating the Order...");
-      resolve();
+      let inStock = true;
+      resolve(inStock);
     }, 1000);
   });
   return promise;
@@ -40,7 +41,8 @@ function sendInvoice() {
 
 async function main() {
   await checkingInventory();
-  await createOrder();
+  let inStock = await createOrder();
+  console.log("Instock", inStock);
   await chargePayment();
   await sendInvoice();
 }
