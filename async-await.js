@@ -12,8 +12,7 @@ function createOrder() {
   const promise = new Promise((resolve, reject) => {
     setTimeout(() => {
       console.log("Creating the Order...");
-      let inStock = true;
-      resolve(inStock);
+      reject(new Error("error is undefined"));
     }, 1000);
   });
   return promise;
@@ -40,11 +39,14 @@ function sendInvoice() {
 }
 
 async function main() {
-  await checkingInventory();
-  let inStock = await createOrder();
-  console.log("Instock", inStock);
-  await chargePayment();
-  await sendInvoice();
+  try {
+    await checkingInventory();
+    await createOrder();
+    await chargePayment();
+    await sendInvoice();
+  } catch (err) {
+    console.log("error", err);
+  }
 }
 
 main();
