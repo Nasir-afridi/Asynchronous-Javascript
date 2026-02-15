@@ -39,14 +39,26 @@ function sendInvoice() {
 }
 
 async function main() {
+  // agrr aik he baar error daikhna hai to osky liye aik he catch lagana pryga leken hrr function prr alag alag daikhna hai to hrr function prr alag alag lagana pryga.xs
   try {
     await checkingInventory();
-    await createOrder();
-    await chargePayment();
-    await sendInvoice();
   } catch (err) {
     console.log("error", err);
   }
+  try {
+    await createOrder();
+  } catch (error) {
+    console.log("error", error);
+  }
+  try {
+    await chargePayment();
+  } catch (error) {
+    console.log("error", error);
+  }
+  try {
+    await sendInvoice();
+  } catch (error) {
+    console.log("error", error);
+  }
 }
-
 main();
